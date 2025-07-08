@@ -38,7 +38,7 @@
       if (uid.length >= 9 && uid.length <= 11) {
         localStorage.setItem("game_uid", uid);
         db.ref("orders/temp").set({ product, uid });
-        location.href = 'card.html';
+        location.href = 'payment.html';
       } else {
         alert("Invalid UID");
       }
