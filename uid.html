@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enter UID</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: sans-serif; padding: 20px; }
+    input, button {
+      width: 100%; padding: 15px; margin: 10px 0;
+      border-radius: 8px; border: 1px solid #555; background: #111; color: white;
+    }
+    button { background: #28a745; border: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Enter Your Game UID</h2>
+  <input type="number" id="uid" placeholder="Enter UID (9-11 digits)" />
+  <button onclick="submitUID()">Submit Now</button>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCGHhx35Rd_wl422i6dXARwVLCmhjp11Zg",
+      authDomain: "bgmi-tournament-panel.firebaseapp.com",
+      databaseURL: "https://bgmi-tournament-panel-default-rtdb.firebaseio.com",
+      projectId: "bgmi-tournament-panel",
+      storageBucket: "bgmi-tournament-panel.appspot.com",
+      messagingSenderId: "531853804076",
+      appId: "1:531853804076:web:0be88f13b7c721bc354789"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function submitUID() {
+      const uid = document.getElementById('uid').value;
+      const product = localStorage.getItem("selectedProduct");
+      if (uid.length >= 9 && uid.length <= 11) {
+        localStorage.setItem("game_uid", uid);
+        db.ref("orders/temp").set({ product, uid });
+        location.href = 'card.html';
+      } else {
+        alert("Invalid UID");
+      }
+    }
+  </script>
+</body>
+</html>
