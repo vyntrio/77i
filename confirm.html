@@ -1,20 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Not Received</title>
+  <meta charset="UTF-8">
+  <title>Server Notice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { background: #000; color: red; font-family: sans-serif; text-align: center; padding: 40px; }
+    body {
+      background-color: #000;
+      text-align: center;
+      padding: 50px 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .color-blink {
+      font-size: 32px;
+      font-weight: bold;
+      animation: blinkColors 1s infinite;
+    }
+
+    @keyframes blinkColors {
+      0%   { color: red; opacity: 1; }
+      10%  { color: blue; opacity: 0.8; }
+      20%  { color: green; opacity: 1; }
+      30%  { color: orange; opacity: 0.8; }
+      40%  { color: pink; opacity: 1; }
+      50%  { color: yellow; opacity: 0.8; }
+      60%  { color: cyan; opacity: 1; }
+      70%  { color: white; opacity: 0.8; }
+      80%  { color: red; opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    @media (max-width: 600px) {
+      .color-blink {
+        font-size: 6vw;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>❌ Payment Not Successful</h2>
-  <p>Please check UPI / UTR<br>You will be redirected.</p>
-
-  <script>
-    setTimeout(() => {
-      location.href = "payment.html";
-    }, 6000);
-  </script>
+  <div class="color-blink">
+    SERVER IS TOO SLOW<br>
+    IF YOU ORDERED DEMO PACK,<br>
+    NOW ORDER MINIMUM 2 PACK.
+  </div>
 </body>
 </html>
