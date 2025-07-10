@@ -1,46 +1,100 @@
+<!-- uid.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Enter UID</title>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
   <style>
-    body { background: #000; color: #fff; font-family: sans-serif; padding: 20px; }
-    input, button {
-      width: 100%; padding: 15px; margin: 10px 0;
-      border-radius: 8px; border: 1px solid #555; background: #111; color: white;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #000;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
     }
-    button { background: #28a745; border: none; font-weight: bold; }
+
+    .logo {
+      width: 140px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+    }
+
+    .container {
+      background: #111;
+      border-radius: 15px;
+      padding: 25px 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 10px #00ffb3;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffb3;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #00ff95, #00ffaa);
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #00ffaa, #00ff95);
+    }
+
+    .note {
+      font-size: 13px;
+      text-align: center;
+      color: #aaa;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
-  <h2>Enter Your Game UID</h2>
-  <input type="number" id="uid" placeholder="Enter UID (9-11 digits)" />
-  <button onclick="submitUID()">Submit Now</button>
+  <img class="logo" src="https://i.postimg.cc/d02v3RhX/image-search-1752126892829.jpg" alt="Logo" />
+
+  <div class="container">
+    <h2>Enter Your Game UID</h2>
+    <input type="number" id="uid" placeholder="9 to 11 digit UID" />
+    <button onclick="next()">Confirm UID</button>
+    <div class="note">Make sure you enter your correct in-game UID.</div>
+  </div>
 
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyCGHhx35Rd_wl422i6dXARwVLCmhjp11Zg",
-      authDomain: "bgmi-tournament-panel.firebaseapp.com",
-      databaseURL: "https://bgmi-tournament-panel-default-rtdb.firebaseio.com",
-      projectId: "bgmi-tournament-panel",
-      storageBucket: "bgmi-tournament-panel.appspot.com",
-      messagingSenderId: "531853804076",
-      appId: "1:531853804076:web:0be88f13b7c721bc354789"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    function submitUID() {
-      const uid = document.getElementById('uid').value;
-      const product = localStorage.getItem("selectedProduct");
+    function next() {
+      const uid = document.getElementById("uid").value;
       if (uid.length >= 9 && uid.length <= 11) {
-        localStorage.setItem("game_uid", uid);
-        db.ref("orders/temp").set({ product, uid });
-        location.href = 'payment.html';
+        localStorage.setItem("uid", uid);
+        window.location.href = "payment.html";
       } else {
-        alert("Invalid UID");
+        alert("Please enter a valid 9 to 11 digit UID.");
       }
     }
   </script>
