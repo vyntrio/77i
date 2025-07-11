@@ -1,102 +1,53 @@
-<!-- uid.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Enter UID</title>
+  <title>UC Order Success</title>
   <style>
-    * { box-sizing: border-box; }
     body {
       margin: 0;
       background: #000;
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 20px;
-      min-height: 100vh;
+      height: 100vh;
+      font-family: Arial, sans-serif;
     }
 
-    .logo {
-      width: 140px;
-      margin-bottom: 30px;
-      border-radius: 10px;
-    }
-
-    .container {
-      background: #111;
-      border-radius: 15px;
-      padding: 25px 20px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 0 10px #00ffb3;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #00ffb3;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      border: none;
-      border-radius: 8px;
-      background: #222;
-      color: #fff;
-      font-size: 16px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(90deg, #00ff95, #00ffaa);
-      color: #000;
+    .blink-text {
+      font-size: 40px;
       font-weight: bold;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: linear-gradient(90deg, #00ffaa, #00ff95);
-    }
-
-    .note {
-      font-size: 13px;
       text-align: center;
-      color: #aaa;
-      margin-top: 15px;
+      animation: blink 1s infinite, colorChange 3s infinite linear;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes colorChange {
+      0% { color: red; }
+      20% { color: orange; }
+      40% { color: yellow; }
+      60% { color: green; }
+      80% { color: blue; }
+      100% { color: purple; }
+    }
+
+    @media (max-width: 600px) {
+      .blink-text {
+        font-size: 28px;
+        padding: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <img class="logo" src="https://i.postimg.cc/d02v3RhX/image-search-1752126892829.jpg" alt="Logo" />
-
-  <div class="container">
-    <h2>Enter Your Game UID</h2>
-    <input type="number" id="uid" placeholder="9 to 11 digit UID" />
-    <button onclick="next()">Confirm UID</button>
-    <div class="note">Make sure you enter your correct in-game UID.</div>
+  <div class="blink-text">
+    UC ORDER SUCCESSFULLY
   </div>
-
-  <script>
-    function next() {
-      const uid = document.getElementById("uid").value;
-      if (uid.length >= 9 && uid.length <= 11) {
-        localStorage.setItem("uid", uid);
-        window.location.href = "payment.html";
-      } else {
-        alert("Please enter a valid 9 to 11 digit UID.");
-      }
-    }
-  </script>
 </body>
 </html>
