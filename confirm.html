@@ -1,53 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UC Order Success</title>
+  <meta charset="UTF-8">
+  <title>Payment Failed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      margin: 0;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background-color: #000;
+      text-align: center;
+      padding: 50px 20px;
       font-family: Arial, sans-serif;
     }
 
-    .blink-text {
-      font-size: 40px;
+    .color-blink {
+      font-size: 32px;
       font-weight: bold;
-      text-align: center;
-      animation: blink 1s infinite, colorChange 3s infinite linear;
+      animation: blinkColors 1s infinite;
     }
 
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes colorChange {
-      0% { color: red; }
-      20% { color: orange; }
-      40% { color: yellow; }
-      60% { color: green; }
-      80% { color: blue; }
-      100% { color: purple; }
+    @keyframes blinkColors {
+      0%   { color: red; opacity: 1; }
+      10%  { color: blue; opacity: 0.8; }
+      20%  { color: green; opacity: 1; }
+      30%  { color: orange; opacity: 0.8; }
+      40%  { color: pink; opacity: 1; }
+      50%  { color: yellow; opacity: 0.8; }
+      60%  { color: cyan; opacity: 1; }
+      70%  { color: white; opacity: 0.8; }
+      80%  { color: red; opacity: 1; }
+      100% { opacity: 0.6; }
     }
 
     @media (max-width: 600px) {
-      .blink-text {
-        font-size: 28px;
-        padding: 10px;
+      .color-blink {
+        font-size: 6vw;
       }
     }
   </style>
 </head>
 <body>
-  <div class="blink-text">
-    UC ORDER SUCCESSFULLY
+  <div class="color-blink">
+    YOUR PAYMENT NOT SUCCESSFUL
   </div>
 </body>
 </html>
