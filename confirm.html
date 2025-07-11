@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Server Notice</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UC Order Success</title>
   <style>
     body {
-      background-color: #000;
-      text-align: center;
-      padding: 50px 20px;
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       font-family: Arial, sans-serif;
     }
 
-    .color-blink {
-      font-size: 32px;
+    .blink-text {
+      font-size: 40px;
       font-weight: bold;
-      animation: blinkColors 1s infinite;
+      text-align: center;
+      animation: blink 1s infinite, colorChange 3s infinite linear;
     }
 
-    @keyframes blinkColors {
-      0%   { color: red; opacity: 1; }
-      10%  { color: blue; opacity: 0.8; }
-      20%  { color: green; opacity: 1; }
-      30%  { color: orange; opacity: 0.8; }
-      40%  { color: pink; opacity: 1; }
-      50%  { color: yellow; opacity: 0.8; }
-      60%  { color: cyan; opacity: 1; }
-      70%  { color: white; opacity: 0.8; }
-      80%  { color: red; opacity: 1; }
-      100% { opacity: 0.6; }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes colorChange {
+      0% { color: red; }
+      20% { color: orange; }
+      40% { color: yellow; }
+      60% { color: green; }
+      80% { color: blue; }
+      100% { color: purple; }
     }
 
     @media (max-width: 600px) {
-      .color-blink {
-        font-size: 6vw;
+      .blink-text {
+        font-size: 28px;
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="color-blink">
-    SERVER IS TOO SLOW<br>
-    IF YOU ORDERED DEMO PACK,<br>
-    NOW ORDER MINIMUM 2 PACK.
+  <div class="blink-text">
+    UC ORDER SUCCESSFULLY
   </div>
 </body>
 </html>
